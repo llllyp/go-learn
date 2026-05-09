@@ -1,5 +1,10 @@
 package main
 
+import(
+  "net/http"
+
+  "github.com/gin-gonic/gin"
+)
 /*
 类型 - Must bind
 	方法 - Bind、BindJSON、BindXML、BindQuery、BindYAML
