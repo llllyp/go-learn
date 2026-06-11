@@ -1,31 +1,31 @@
 package main
 
 import (
-	"net/http"
 	"encoding/json"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
 type RequestModel struct {
 	OperatorID string `binding:"required"`
-	Data string `binding:"required"`
-	TimeStamp string `binding:"required"`
-	Seq string `binding:"required"`
-	Sig string `binding:"required"`
+	Data       string `binding:"required"`
+	TimeStamp  string `binding:"required"`
+	Seq        string `binding:"required"`
+	Sig        string `binding:"required"`
 }
 
 type QueryStationStatsBo struct {
 	StationID string
 	StartTime string
-	EndTime string
+	EndTime   string
 }
 
 type ResponseModel struct {
-	Ret int
-	Msg string
+	Ret  int
+	Msg  string
 	Data string
-	Sig string
+	Sig  string
 }
 
 // type SuccessData struct {
@@ -52,19 +52,19 @@ type SuccessData struct {
 	StationStats StationStats
 }
 type StationStats struct {
-	StationID string
-	StartTime string
-	EndTime string
-	StationElectricity float64
+	StationID           string
+	StartTime           string
+	EndTime             string
+	StationElectricity  float64
 	EquipmentStatsInfos []EquipmentStatsInfo
 }
 type EquipmentStatsInfo struct {
-	EquipmentID string
+	EquipmentID          string
 	EquipmentElectricity string
-	ConnectorStatsInfos []ConnectorStatsInfo
+	ConnectorStatsInfos  []ConnectorStatsInfo
 }
 type ConnectorStatsInfo struct {
-	ConnectorID string
+	ConnectorID          string
 	ConnectorElectricity float64
 }
 
@@ -85,17 +85,17 @@ func main() {
 		}
 		successData := SuccessData{
 			StationStats: StationStats{
-				StationID: "StationID_57dce96ddcc7",
-				StartTime: "StartTime_2cb1d439bf85",
-				EndTime: "EndTime_0a2ea9ef4fce",
+				StationID:          "StationID_57dce96ddcc7",
+				StartTime:          "StartTime_2cb1d439bf85",
+				EndTime:            "EndTime_0a2ea9ef4fce",
 				StationElectricity: 0.00,
 				EquipmentStatsInfos: []EquipmentStatsInfo{
 					{
-						EquipmentID: "EquipmentID_17e274204245",
+						EquipmentID:          "EquipmentID_17e274204245",
 						EquipmentElectricity: "EquipmentElectricity_f21cff1927af",
 						ConnectorStatsInfos: []ConnectorStatsInfo{
 							{
-								ConnectorID: "ConnectorID_f217f74367dd",
+								ConnectorID:          "ConnectorID_f217f74367dd",
 								ConnectorElectricity: 0.00,
 							},
 						},
@@ -113,5 +113,4 @@ func main() {
 		ctx.JSON(http.StatusOK, successResp)
 	})
 	router.Run(":1234")
-}						
-				
+}
