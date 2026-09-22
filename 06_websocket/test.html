@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket Demo</title>
+</head>
+<body>
+<input id="input" type="text" placeholder="输入消息">
+<button onclick="send()">发送</button>
+<div id="msgBox"></div>
+
+<script>
+let ws = new WebSocket("ws://127.0.0.1:8080/ws");
+const msgBox = document.getElementById('msgBox');
+const input = document.getElementById('input');
+
+ws.onopen = () => {
+    append("连接成功");
+};
+
+ws.onmessage = (e) => {
+    append("服务端返回：" + e.data);
+};
+
+ws.onclose = () => {
+    append("连接关闭");
+};
+
+ws.onerror = (err) => {
+    append("错误：" + err);
+};
+
+function send(){
+    const val = input.value.trim();
+    if(!val) return;
+    ws.send(val);
+    append("我发送：" + val);
+    input.value = '';
+}
+
+function append(text){
+    msgBox.innerHTML += `<div>${text}</div>`
+}
+</script>
+</body>
+</html>
+

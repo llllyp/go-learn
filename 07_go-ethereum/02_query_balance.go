@@ -18,7 +18,7 @@ func main() {
 	}
 
 	// 要查询的地址
-	address := common.HexToAddress("0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65")
+	address := common.HexToAddress("0xd4d249A88D6cB574c273e0F3a0b2eC6A937eAe6F")
 
 	// 查询余额, nil表示最新区块
 	balance, err := client.BalanceAt(context.Background(), address, nil)
